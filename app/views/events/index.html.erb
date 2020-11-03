@@ -2,7 +2,17 @@
   <html>    
       
     <body>
-      
+
+      <div class="container">
+        <div class="card-group vgr-cards">
+          <% @events.each do |event| %>
+            <div class="col-lg-4 text-justify ">
+              <img class="rounded-circle mx-auto d-block" src="https://picsum.photos/id/<%= rand(1..99) %>/75/75" alt="Generic placeholder image" width="140" height="140" >
+              <h2><%= event.title %></h2>
+              <p><%= event.description %></p>
+              <p><%= link_to "Détail", event_path(event.id), class:"btn btn-secondary ", role:"button", style: "margin-left: 100px" %></p>
+            </div>
+          <% end %>
 
     
 

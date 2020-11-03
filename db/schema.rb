@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_100203) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "star_date"
+    t.datetime "start_date"
     t.integer "duration"
     t.string "title"
     t.text "description"

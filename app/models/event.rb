@@ -3,13 +3,22 @@ class Event < ApplicationRecord
   has_many :users, through: :attendances
   belongs_to :user
 
-  validates :star_date, presence: true#, if: :star_date > Time.now
-  validates :duration, presence: true# numericality: {greater_than: 0 } if: :duration%5 == 0
-  validates :title, presence: true#, lenght { in: 5..140 }
-  validates :description, presence: true#, lenght { in: 20..1000 }
-  validates :price, presence: true# numericality: {greater_than_or_equal_to: 1, less_than_or_equal_to: 1000}
+  validates :start_date, presence: true
+  validates :duration, presence: true, numericality: { greater_than: 0 }
+  validates :title, presence: true, length: { in: 5..140 }
+  validates :description, presence: true, length: { in: 20..1000 }
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
   validates :location, presence: true
+  validate :is_future?, :divisable_by_five?
 
- 
+  private
+
+  def is_future?
+    errors.add(:expiration_date, "can't be in the past.") if start_date < Time.now
+  end
+
+  def divisable_by_five?
+    errors.add(:duration, "must be a multiple of 5") unless duration % 5 == 0 
+  end
 
 end
