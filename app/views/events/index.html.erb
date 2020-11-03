@@ -7,7 +7,7 @@
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         <hr class="my-4">
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <a><%= link_to "Créer un événement", new_event_path, class: "btn btn-primary btn-lg", role: "button"%></a>
       </div>
 
       <div class="container">
@@ -17,7 +17,7 @@
               <img class="rounded-circle mx-auto d-block" src="https://picsum.photos/id/<%= rand(1..99) %>/75/75" alt="Generic placeholder image" width="140" height="140" >
               <h2><%= event.title %></h2>
               <p><%= event.description %></p>
-              <p><%= link_to "Détail", event_path(event.id), class:"btn btn-secondary ", role:"button", style: "margin-left: 100px" %></p>
+              <p><%= link_to "Détail", event_path(event.id), class:"btn btn-secondary", role:"button"%></p>
             </div>
           <% end %>
 

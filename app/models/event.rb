@@ -14,7 +14,11 @@ class Event < ApplicationRecord
   private
 
   def is_future?
-    errors.add(:expiration_date, "can't be in the past.") if start_date < Time.now
+    if start_date != nil
+      if Time.now > start_date
+        errors.add(:start_date, "date de départ peut pas être passée !")
+      end
+    end
   end
 
   def divisable_by_five?
