@@ -28,8 +28,8 @@
                   S'inscrire / Se connecter
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href=<%= new_user_registration_path %>>S'inscrire</a>
-                    <a class="dropdown-item" href=<%= new_user_session_path %>>Se connecter</a>
+                    <a class="dropdown-item"><%= link_to "S'inscrire", new_user_registration_path %></a>
+                    <a class="dropdown-item"><%= link_to "Se connecter", new_user_session_path %></a>
                   </div>
                 </li>
               
@@ -38,8 +38,8 @@
                     Mon profil
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Mon profil</a>
-                    <a class="dropdown-item" href=<%= destroy_user_session_path %>>Se déconnecter</a>
+                    <a class="dropdown-item"><%= link_to "Mon profil"%></a>
+                    <a class="dropdown-item"><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></a>
                   </div>
                 </li>
               
