@@ -49,7 +49,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "letter_opener"
-  gem 'activerecord-reset-pk-sequence'
+  
 end
 
 group :test do
@@ -67,3 +67,4 @@ gem 'faker'
 gem 'dotenv-rails'
 gem 'sendgrid-ruby'
 gem 'devise'
+gem 'activerecord-reset-pk-sequence'
