@@ -1,5 +1,5 @@
 class AttendanceMailer < ApplicationMailer
-  default from: 'jonathan.lalanne@outlook.fr' 
+  default from: 'yeyel974@hotmail.com' 
 
   def join_event(attendance)
     #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
