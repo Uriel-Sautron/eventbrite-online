@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   has_many :attendances
   has_many :users, through: :attendances
-  belongs_to :user
+  belongs_to :event_admin, class_name: 'User', optional: true
 
   validates :start_date, presence: true
   validates :duration, presence: true, numericality: { greater_than: 0 }

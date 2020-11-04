@@ -1,0 +1,12 @@
+<main role="main" class="container">
+      <h1 class="mt-5"><%= @event.title %></h1>
+      <h3 class="mt-5">Créer par : <%= @event.event_admin.first_name %></h3>
+      <p class="lead"><%= @event.description %></p>
+     <h3 class="mt-5">Prix : <%= @event.price %>€</h3>
+
+
+  <% if current_user == @event.event_admin %>
+     <%=link_to "Supprimer", event_path(@event.id), method: :delete%>
+     <%=link_to "Editer", edit_event_path(@event.id) %>
+  <% end %>
+     <%=link_to "Participer", new_event_attendance_path(@event.id) %>

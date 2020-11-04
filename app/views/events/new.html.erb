@@ -1,7 +1,7 @@
 <%= form_for(@event) do |f| %>
 <div class = "form-group">
   <div class="field mt-5">
-
+  <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %> >
    <div class="field">
     <%= f.label :start_date %><br>
     <%= f.date_field :start_date, class: 'form-control' %>

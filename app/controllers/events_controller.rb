@@ -8,18 +8,33 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def show
+    @event = Event.find(params[:id])
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to root_path
+  end
+
   def create
 
-    @event = Event.create(eventparams)
-    @event.user_id current_user.id
+    @event = Event.create(event_params)
+    @event.admin_id = current_user.id
+    if @event.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
 
 
   private
 
-  def eventparams
-    params.permit[:start_date, :duration, :title, :description, :price, :location]
+  def event_params
+    event_params = params.require(:event).permit(:start_date, :title, :duration, :description, :price, :location)
   end
 
 end
