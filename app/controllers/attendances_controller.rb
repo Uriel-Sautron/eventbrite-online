@@ -26,13 +26,14 @@ class AttendancesController < ApplicationController
     })
 
     
-  if charge.save
-    attendance_params = params.permit[:stripeToken]
+  
+    attendance_params = params.permit[:event_id]
     attendance_params.inspect
-    @attendance = Attendance.create(strip_customer_id: attendance_params, event_id: @event.id)
-    @attendance.user_id = current_user.id
+    @attendance = Attendance.create(user_id: current_user.id, event_id: @event.id, strip_customer_id: customer.id)
+    
+    
     redirect_to event_path(@event.id)
-  end
+  
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_event_attendances_path

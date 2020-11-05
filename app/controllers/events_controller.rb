@@ -22,6 +22,7 @@ class EventsController < ApplicationController
 
     @event = Event.create(event_params)
     @event.event_admin_id = current_user.id
+    
     if @event.save
       redirect_to root_path
     else
@@ -34,7 +35,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    event_params = params.require(:event).permit(:start_date, :title, :duration, :description, :price, :location)
+    event_params = params.require(:event).permit(:start_date, :title, :duration, :description, :price, :location, :event_picture)
   end
 
 end

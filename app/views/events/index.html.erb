@@ -2,7 +2,7 @@
   <html>    
       
     <body>
-      <div class="jumbotron">
+      <div class="jumbotron text-white jumbotron-image shadow" style="background-image: url(https://images.unsplash.com/photo-1552152974-19b9caf99137?fit=crop&w=1350&q=80);">
         <h1 class="display-4">Hello, world!</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         <hr class="my-4">
@@ -14,7 +14,11 @@
         <div class="card-group vgr-cards">
           <% @events.each do |event| %>
             <div class="col-lg-4 text-justify ">
-              <img class="rounded-circle mx-auto d-block" src="https://picsum.photos/id/<%= rand(1..99) %>/75/75" alt="Generic placeholder image" width="140" height="140" >
+              <%if event.event_picture.attached?%>
+                <%= image_tag event.event_picture, alt: 'avatar' , class: "rounded-circle mx-auto d-block", width: "140", height: "140" %>
+              <%else%> 
+                <img class="rounded-circle mx-auto d-block" src="https://picsum.photos/id/<%= rand(1..99) %>/75/75" alt="Generic placeholder image" width="140" height="140" >
+              <%end%>
               <h2><%= event.title %></h2>
               <p><%= event.description %></p>
               <p><%= link_to "Détail", event_path(event.id), class:"btn btn-secondary", role:"button"%></p>

@@ -1,4 +1,6 @@
 class Event < ApplicationRecord
+
+  has_one_attached :event_picture
   has_many :attendances
   has_many :users, through: :attendances
   belongs_to :event_admin, class_name: 'User', optional: true
@@ -10,7 +12,7 @@ class Event < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 1000 }
   validates :location, presence: true
   validate :is_future?, :divisable_by_five?
-
+   
   private
 
   def is_future?

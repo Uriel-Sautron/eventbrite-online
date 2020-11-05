@@ -43,7 +43,7 @@ tp User.all
     description: Faker::Hipster.paragraph,
     price: rand(1..1000),
     location: Faker::Address.unique.city,
-    user_id: User.ids.sample)
+    event_admin_id: User.ids.sample)
 end
 tp Event.all
 

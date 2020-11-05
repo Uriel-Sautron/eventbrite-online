@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :events do
     resources :attendances, only: [:index, :new, :create]
+    resources :event_pictures, only: [:create]
   end
   
 
