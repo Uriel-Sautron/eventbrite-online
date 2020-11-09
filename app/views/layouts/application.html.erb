@@ -41,6 +41,11 @@
                 </li>
               <% end %>
         </div>
+        <% if user_signed_in? && current_user.is_admin? %>
+          <div class="d-flex justify-content-end">
+            <%= link_to "Admin", admin_root_path, class: "btn btn-danger" %>
+          </div>
+        <% end %>
       </nav>
     <% if flash[:success] %>
       <div class="alert alert-success alert-dismissible fade show" role="alert">

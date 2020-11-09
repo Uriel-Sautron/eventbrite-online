@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  #before_action :is_validated
   def index
-    @events = Event.all
+    @events = Event.where(validated: true)
   end
 
   def new
@@ -36,6 +37,10 @@ class EventsController < ApplicationController
 
   def event_params
     event_params = params.require(:event).permit(:start_date, :title, :duration, :description, :price, :location, :event_picture)
+  end
+
+  def is_validated
+    @event.validated == true
   end
 
 end

@@ -28,7 +28,7 @@ class AttendancesController < ApplicationController
     
   
     attendance_params = params.permit[:event_id]
-    attendance_params.inspect
+    
     @attendance = Attendance.create(user_id: current_user.id, event_id: @event.id, strip_customer_id: customer.id)
     
     
